@@ -1,7 +1,7 @@
 ﻿using DevIO.Business.Models;
 using FluentValidation;
 
-namespace DevIO.Business.Validation
+namespace DevIO.Business.Models.Validation
 {
     public class EnderecoValidation : AbstractValidator<Endereco>
     {
