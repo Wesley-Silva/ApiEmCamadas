@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DevIO.Business.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace DevIO.API.ViewModels
 {
