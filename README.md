@@ -30,23 +30,38 @@ uma arquitetura três camadas eficiente e profissional.
 - ``Desenvolvendo a camada de negócios``
     * Criando as entidades
     * Como trabalhar com validações
-    * ......
+    * Definindo interfaces de serviços
+    * Definindo interfaces de persistência
+    * Implementando serviços de negócios
+    * Implementando validações
+    * Implementando regras customizadas
+    * Implementando notificações de erros
       
 - ``Desenvolvendo a camada de acesso a dados``
-    * ...
-    * ...
+    * Definindo o context do Entity Framework
+    * Mapeando as entidades
+    * Customizando comportamentos do EF
+    * Criando o banco via migrations
+    * Definindo um repositório genérico
+    * Especializando repositório das entidades
     
 - ``Conectando a aplicação na arquitetura``
-    * Rodando em Self Hosting
-    * Deploy via Docker
-    * Configurações do Ambiente Docker
-    * Deploy via IIS Local
-    * Deploy na Nuvem - Azure
+    * Criando a camada de aplicação
+    * Mapeando as ViewModels
+    * Definindo as controllers
+    * Implementando Mapeadores
+    * Resolvendo dependências -- Pendente
+    * Funcionalidades de negócios -- Pendente
+    * Mensagens de erro e notificações -- Pendente
+    * Funcionamento da arquitetura na API -- Pendente
+    * Funcionamento da arquitetura no MVC -- Pendente
 
 <div id='referencias'/>
   
 # Referências
 *  *[ASP.NET Core](https://learn.microsoft.com/pt-br/aspnet/core/?view=aspnetcore-8.0?target=blank)*
+*  *[AutoMapper](https://automapper.org?target=blank)*
+*  *[FluentValidation](https://docs.fluentvalidation.net/en/latest/=blank)*
 
 <div id='telas'/> 
   
