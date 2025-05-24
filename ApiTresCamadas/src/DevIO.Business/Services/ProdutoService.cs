@@ -21,6 +21,14 @@ namespace DevIO.Business.Services
                 return;
             }
 
+            var produtoExistente = _produtoRepository.ObterPorId(produto.Id);
+
+            if (produtoExistente != null)
+            {
+                Notificar("Já existe um produto com o ID informado");
+                return;
+            }
+
             await _produtoRepository.Adicionar(produto);
         }
 

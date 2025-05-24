@@ -25,6 +25,6 @@ namespace DevIO.API.ViewModels
 
         public bool Ativo { get; set; }
 
-        public string NomeFornecedor { get; set; }
+        public string? NomeFornecedor { get; set; }
     }
 }
