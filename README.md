@@ -50,11 +50,11 @@ uma arquitetura três camadas eficiente e profissional.
     * Mapeando as ViewModels
     * Definindo as controllers
     * Implementando Mapeadores
-    * Resolvendo dependências -- Pendente
-    * Funcionalidades de negócios -- Pendente
-    * Mensagens de erro e notificações -- Pendente
-    * Funcionamento da arquitetura na API -- Pendente
-    * Funcionamento da arquitetura no MVC -- Pendente
+    * Resolvendo dependências 
+    * Funcionalidades de negócios 
+    * Mensagens de erro e notificações 
+    * Funcionamento da arquitetura na API 
+    * Funcionamento da arquitetura no MVC
 
 <div id='referencias'/>
   
