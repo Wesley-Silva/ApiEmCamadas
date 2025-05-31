@@ -68,6 +68,7 @@ uma arquitetura três camadas eficiente e profissional.
 # Telas
 ![Tela](https://github.com/Wesley-Silva/Dominando-ASPNETCore/blob/main/ASPNETCoreMVC/wwwroot/ImagesReadme/pipeline-aspnet.jpg)
 ![Tela](https://github.com/Wesley-Silva/Dominando-ASPNETCore/blob/main/ASPNETCoreMVC/wwwroot/ImagesReadme/pipeline-aspnet-mvc.jpg)
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/ApiTresCamadas/src/DevIO.API/Imagens/End-Point-Api.jpg)
 
 <div id='sobre'/>  
   
