@@ -8,7 +8,7 @@ namespace DevIO.App.Configuration
     {
         public AutoMapperConfig()
         {
-            CreateMap<ProdutoViewModel, Produto>();
+            CreateMap<Produto, ProdutoViewModel>().ReverseMap();
         }
     }
 }
