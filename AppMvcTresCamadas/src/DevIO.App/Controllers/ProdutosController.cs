@@ -58,6 +58,37 @@ namespace DevIO.App.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("excluir-produto/{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var produto = await ObterProduto(id);
+
+            if (produto == null)
+            {
+                return NotFound();
+            }
+
+            return View(produto);
+        }
+
+        [Route("excluir-produto/{id:guid}")]
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var produto = await ObterProduto(id);
+
+            if (produto == null)
+            {
+                return NotFound();
+            }
+
+            await _produtoService.Remover(id);
+
+            TempData["Sucesso"] = "Produto excluido com sucesso!";
+
+            return RedirectToAction("Index");
+        }
+
         private async Task<ProdutoViewModel> ObterProduto(Guid id)
         {
             var produto = _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterProdutoFornecedor(id));
