@@ -58,6 +58,33 @@ namespace DevIO.App.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("editar-produto/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var produtoViewModel = await ObterProduto(id);
+
+            if (produtoViewModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(produtoViewModel);
+        }
+
+        [Route("editar-produto/{id:guid}")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, ProdutoViewModel produtoViewModel)
+        {
+            if (id != produtoViewModel.Id)
+            {
+                return NotFound();
+            }
+
+            await _produtoService.Atualizar(_mapper.Map<Produto>(produtoViewModel));
+
+            return RedirectToAction("Index");
+        }
+
         [Route("excluir-produto/{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
