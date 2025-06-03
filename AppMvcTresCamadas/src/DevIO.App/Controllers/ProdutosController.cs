@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DevIO.App.Models;
 using DevIO.Business.Interfaces;
+using DevIO.Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.App.Controllers
@@ -22,6 +23,26 @@ namespace DevIO.App.Controllers
         public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterProdutosFornecedores()));
+        }
+
+        [Route("novo-produto")]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [Route("novo-produto")]
+        [HttpPost]
+        public async Task<IActionResult> Create(ProdutoViewModel produtoViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(produtoViewModel);
+            }
+
+            await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
+
+            return RedirectToAction("Index");
         }
     }
 }
