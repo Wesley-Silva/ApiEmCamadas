@@ -1,18 +1,22 @@
 ﻿using AutoMapper;
 using DevIO.App.Models;
+using DevIO.App.ViewModels;
 using DevIO.Business.Interfaces;
 using DevIO.Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.App.Controllers
 {
-    public class ProdutosController : Controller
+    public class ProdutosController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly IProdutoRepository _produtoRepository;
         private readonly IProdutoService _produtoService;
 
-        public ProdutosController(IMapper mapper, IProdutoRepository produtoRepository, IProdutoService produtoService)
+        public ProdutosController(IMapper mapper, 
+                                  IProdutoRepository produtoRepository, 
+                                  IProdutoService produtoService,
+                                  INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _produtoRepository = produtoRepository;
@@ -55,6 +59,11 @@ namespace DevIO.App.Controllers
 
             await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
+            if (!OperacaoValida())
+            {
+                return View(produtoViewModel);
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -81,6 +90,11 @@ namespace DevIO.App.Controllers
             }
 
             await _produtoService.Atualizar(_mapper.Map<Produto>(produtoViewModel));
+
+            if (!OperacaoValida())
+            {
+                return View(produtoViewModel);
+            }
 
             return RedirectToAction("Index");
         }
@@ -110,6 +124,11 @@ namespace DevIO.App.Controllers
             }
 
             await _produtoService.Remover(id);
+
+            if (!OperacaoValida())
+            {
+                return View(produto);
+            }
 
             TempData["Sucesso"] = "Produto excluido com sucesso!";
 
