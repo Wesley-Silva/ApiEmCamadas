@@ -14,7 +14,7 @@ builder.Services.AddDbContext<MeuDbContext>(options =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.ResolveDependencias();
+builder.Services.ResolveDependencies();
 
 var app = builder.Build();
 

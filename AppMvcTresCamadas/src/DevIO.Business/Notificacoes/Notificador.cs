@@ -6,7 +6,7 @@ namespace DevIO.Business.Notificacoes
     {
         private List<Notificacao> _notificacoes;
 
-        public Notificador(List<Notificacao> notificacaos)
+        public Notificador()
         {
             _notificacoes = new List<Notificacao>();
         }
