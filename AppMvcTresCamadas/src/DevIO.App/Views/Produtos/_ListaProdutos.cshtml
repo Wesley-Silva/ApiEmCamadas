@@ -5,7 +5,10 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
-            </th>            
+            </th>     
+            <th>
+                @Html.DisplayNameFor(model => model.Fornecedor)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Valor)
             </th>
@@ -21,6 +24,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fornecedor.Nome)
                 </td>
                 <td>
                     @item.Valor.ToString("C")
