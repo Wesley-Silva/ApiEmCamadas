@@ -1,5 +1,5 @@
 <p align="center">
-<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=%20CONCLUIDO&color=GREEN&style=for-the-badge"/>
 </p>
 
 # Curso - Projetando Arquitetura em Três Camadas 
@@ -70,8 +70,25 @@ uma arquitetura três camadas eficiente e profissional.
 ![Tela](https://github.com/Wesley-Silva/Dominando-ASPNETCore/blob/main/ASPNETCoreMVC/wwwroot/ImagesReadme/pipeline-aspnet-mvc.jpg)
 ![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/ApiTresCamadas/src/DevIO.API/Imagens/End-Point-Api.jpg)
 
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/AppMvcTresCamadas/src/DevIO.App/wwwroot/Imagens/Application.gif)
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/AppMvcTresCamadas/src/DevIO.App/wwwroot/Imagens/lista-fornecedores.jpg)
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/AppMvcTresCamadas/src/DevIO.App/wwwroot/Imagens/edit-fornecedor.jpg)
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/AppMvcTresCamadas/src/DevIO.App/wwwroot/Imagens/add-fornecedor.jpg)
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/AppMvcTresCamadas/src/DevIO.App/wwwroot/Imagens/lista-produtos.jpg)
+![Tela](https://github.com/Wesley-Silva/ApiEmCamadas/blob/main/AppMvcTresCamadas/src/DevIO.App/wwwroot/Imagens/excluir-produtos.jpg)
+
 <div id='sobre'/>  
-  
+
+## Começando
+Você pode executar o projeto Demo MVC em qualquer sistema operacional. **Certifique-se de ter instalado o Docker em seu ambiente.** (*[Obter instalação do Docker](https://docs.docker.com/desktop/setup/install/windows-install/?target=blank)*)
+
+## Executar o aplicativo Demo MVC no seu ambiente Docker:
+Clone o repositório do Demo MVC e navegue até a pasta que está o arquivo "docker-compose.yml" e então:
+
+```bash
+docker-compose up
+```
+
 ## Sobre
 
 Desenvolvedor com +2 anos de experiência em desenvolvimento de software, especializado na plataforma .NET. 
