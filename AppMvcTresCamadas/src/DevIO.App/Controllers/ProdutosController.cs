@@ -11,15 +11,18 @@ namespace DevIO.App.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IFornecedorRepository _fornecedorRepository;
         private readonly IProdutoService _produtoService;
 
-        public ProdutosController(IMapper mapper, 
-                                  IProdutoRepository produtoRepository, 
+        public ProdutosController(IMapper mapper,
+                                  IProdutoRepository produtoRepository,
+                                  IFornecedorRepository fornecedorRepository,
                                   IProdutoService produtoService,
                                   INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _produtoRepository = produtoRepository;
+            _fornecedorRepository = fornecedorRepository;
             _produtoService = produtoService;
         }
 
@@ -45,24 +48,21 @@ namespace DevIO.App.Controllers
         [Route("novo-produto")]
         public async Task<IActionResult> Create()
         {
-            return View();
+            var produtoViewModel = await PopularFornecedores(new ProdutoViewModel());
+
+            return View(produtoViewModel);
         }
 
         [Route("novo-produto")]
         [HttpPost]
         public async Task<IActionResult> Create(ProdutoViewModel produtoViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(produtoViewModel);
-            }
+            produtoViewModel = await PopularFornecedores(produtoViewModel);
+            if (!ModelState.IsValid) return View(produtoViewModel);
 
             await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
-            if (!OperacaoValida())
-            {
-                return View(produtoViewModel);
-            }
+            if (!OperacaoValida()) return View(produtoViewModel);
 
             return RedirectToAction("Index");
         }
@@ -84,17 +84,13 @@ namespace DevIO.App.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Guid id, ProdutoViewModel produtoViewModel)
         {
-            if (id != produtoViewModel.Id)
-            {
-                return NotFound();
-            }
+            if (id != produtoViewModel.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View(produtoViewModel);
 
             await _produtoService.Atualizar(_mapper.Map<Produto>(produtoViewModel));
 
-            if (!OperacaoValida())
-            {
-                return View(produtoViewModel);
-            }
+            if (!OperacaoValida()) return View(produtoViewModel);
 
             return RedirectToAction("Index");
         }
@@ -125,10 +121,7 @@ namespace DevIO.App.Controllers
 
             await _produtoService.Remover(id);
 
-            if (!OperacaoValida())
-            {
-                return View(produto);
-            }
+            if (!OperacaoValida()) return View(produto);
 
             TempData["Sucesso"] = "Produto excluido com sucesso!";
 
@@ -138,7 +131,13 @@ namespace DevIO.App.Controllers
         private async Task<ProdutoViewModel> ObterProduto(Guid id)
         {
             var produto = _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterProdutoFornecedor(id));
+            produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(await _fornecedorRepository.ObterTodos());
+            return produto;
+        }
 
+        private async Task<ProdutoViewModel> PopularFornecedores(ProdutoViewModel produto)
+        {
+            produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(await _fornecedorRepository.ObterTodos());
             return produto;
         }
     }
